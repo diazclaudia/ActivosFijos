@@ -21,7 +21,7 @@ public class Conexion {
         //invocamos el bean de parametrizacion	
         DB_driver = "com.mysql.jdbc.Driver";
 
-        url = "jdbc:mysql://localhost:3306/ActivosFijos";
+        url = "jdbc:mysql://localhost:3306/activosfijos";
         username = "root";
         password = "1234";
 
