@@ -16,7 +16,8 @@
     List<String> tareas = Arrays.asList(new String[]{
         "BuscarTodosActivos",
         "CrearActivos",
-        "EditarActivos"
+        "EditarActivos",
+        "EditarSerialFecha"
     });
 
     String proceso = "" + request.getParameter("proceso");
@@ -68,7 +69,8 @@
                 respuesta += ",\"CrearActivos\":false";
             }
 
-            // --------------------------------Proceso 2---------------------------------- //
+                   
+         // --------------------------------Proceso 3---------------------------------- //
         } else if (proceso.equals("EditarActivos")) {
             // Procesos para determinar respuestas...
             af.setSerial(Serial);
@@ -91,6 +93,21 @@
                 respuesta += ",\"EditarActivo\":true";
             } else {
                 respuesta += ",\"EditarActivo\":false";
+            }
+
+               
+         // --------------------------------Proceso 2---------------------------------- //
+        } else if (proceso.equals("EditarSerialFecha")) {
+            // Procesos para determinar respuestas...
+            af.setSerial(Serial);            
+            af.setN_interno(N_interno);          
+            af.setFecha_baja(Fecha_baja);           
+
+            // Adjuntar respuesta.
+            if (af.EditarSerialFecha()) {
+                respuesta += ",\"EditarSerialFecha\":true";
+            } else {
+                respuesta += ",\"EditarSerialFecha\":false";
             }
 
         }

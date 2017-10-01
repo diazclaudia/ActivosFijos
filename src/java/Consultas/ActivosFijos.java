@@ -245,5 +245,22 @@ public class ActivosFijos {
         }
 
     }
+       
+       public boolean EditarSerialFecha() throws SQLException {
+        Conexion bd = new Conexion();
+        String sentencia = "Update activosfijos set  "               
+                + " N_interno='" + this.N_interno + "',"                
+                + " Fecha_baja='" + this.Fecha_baja + "' "                            
+                + " where Serial='" + this.Serial + "'";
+
+        if (bd.actualizarBD(sentencia)) {
+            bd.cerrarConexion();
+            return true;
+        } else {
+            bd.cerrarConexion();
+            return false;
+        }
+
+    }
 
 }

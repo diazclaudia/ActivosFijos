@@ -317,6 +317,18 @@
         alert("La fecha de baja no puede ser mayor que la de compra");
         return false;
         }
+        
+        <%  ResultSet r = af.BuscarActivos();
+             while (r.next()) {
+             String N_internobd = r.getString("N_interno"); %>
+             var  N_internobd = '<%=N_internobd%>';
+             var n_interno<%=serial%> = $('#n_interno<%=serial%>').val();
+             if(n_interno<%=serial%> === N_internobd){
+                  alert("El número interno que desea asignar ya existe");
+                  return false;
+             }
+    
+        <%  }%>    
 
 
         return true;
