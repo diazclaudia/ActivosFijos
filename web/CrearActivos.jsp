@@ -92,8 +92,8 @@
                     <div class="col-sm-10">
                         <select  id="estado" >
                             <option value="activo">Activo</option>
-                            <option value="dado de baja">Dado de baja</option>
-                            <option value="en reparación">En reparación</option>
+                            <option value="dado_baja">Dado de baja</option>
+                            <option value="reparacion">En reparación</option>
                             <option value="disponible">Disponible</option>
                             <option value="asignado">Asignado</option>
                         </select>                     
@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group">        
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" id="guardar">Guardar</button>
+                        <center><button class="btn btn-default" id="guardar">Guardar</button></center>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                     guardar: function () {
 
                       
-                        var estado = $('#estado').val();  
+                        var estado = $("#estado").val();  
                         var nombre = $('#nombre').val();
                         var descripcion = $('#descripcion').val();
                         var tipo = $('#tipo').val();
@@ -225,6 +225,7 @@
                                 if (data.ok === true) {
                                     if (data.CrearActivos === true) {
                                         alert("El activo se ha creado");
+                                        self.location.reload();
                                     } else {
                                         alert("El activo no se ha creado");
                                     }

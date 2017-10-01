@@ -1,6 +1,6 @@
 <%-- 
-    Document   : BuscarTodosActivos
-    Created on : 30/09/2017, 10:33:42 AM
+    Document   : ActualizarActivos
+    Created on : 30/09/2017, 05:53:20 PM
     Author     : Lenovo
 --%>
 
@@ -10,80 +10,89 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>DataTables example - Zero configuration</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"><link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+        <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+ 
+        <script>
+            
+            $(document).ready(function () {
+                $.noConflict();
+                $('#example').DataTable();
+            });
+        </script>
     </head>
     <body>
+        <br><br>
         <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Serial</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Tipo</th>
-                <th>N. interno</th>
-                <th>Peso</th>
-                <th>Alto</th>
-                <th>Ancho</th>
-                <th>Largo</th>
-                <th>Valor compra</th>
-                <th>Fecha compra</th>
-                <th>Fecha baja</th>
-                <th>Estado actual</th>
-                <th>Color</th>                
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Serial</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Tipo</th>
-                <th>N. interno</th>
-                <th>Peso</th>
-                <th>Alto</th>
-                <th>Ancho</th>
-                <th>Largo</th>
-                <th>Valor compra</th>
-                <th>Fecha compra</th>
-                <th>Fecha baja</th>
-                <th>Estado actual</th>
-                <th>Color</th>   
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-                 <%
+            <thead>
+                <tr>
+                    <th>Serial</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>N. interno</th>
+                    <th>Peso</th>
+                    <th>Alto</th>
+                    <th>Ancho</th>
+                    <th>Largo</th>
+                    <th>Valor compra</th>
+                    <th>Fecha compra</th>
+                    <th>Fecha baja</th>
+                    <th>Estado actual</th>
+                    <th>Color</th>                
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Serial</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>N. interno</th>
+                    <th>Peso</th>
+                    <th>Alto</th>
+                    <th>Ancho</th>
+                    <th>Largo</th>
+                    <th>Valor compra</th>
+                    <th>Fecha compra</th>
+                    <th>Fecha baja</th>
+                    <th>Estado actual</th>
+                    <th>Color</th>   
+                </tr>
+            </tfoot>
+            <tbody>
+                <%
                     ActivosFijos af = new ActivosFijos();
                     ResultSet m = af.BuscarActivos();
                     while (m.next()) {
                 %>
-                <td><%=m.getString("Serial")%></td>
-                <td><%=m.getString("Nombre")%></td>
-                <td><%=m.getString("Descripcion")%></td>
-                <td><%=m.getString("Tipo")%></td>
-                <td><%=m.getString("N_interno")%></td>
-                <td><%=m.getString("Peso")%></td>
-                <td><%=m.getString("Alto")%></td>
-                <td><%=m.getString("Ancho")%></td>
-                <td><%=m.getString("Largo")%></td>
-                <td><%=m.getString("Valor_compra")%></td>
-                <td><%=m.getString("Fecha_compra")%></td>
-                <td><%=m.getString("Fecha_baja")%></td>
-                <td><%=m.getString("Estado_actual")%></td>
-                <td><%=m.getString("Color")%></td>
-                 <%
+                <tr>                 
+                    <td><%=m.getString("Serial")%></td>
+                    <td><%=m.getString("Nombre")%></td>
+                    <td><%=m.getString("Descripcion")%></td>
+                    <td><%=m.getString("Tipo")%></td>
+                    <td><%=m.getString("N_interno")%></td>
+                    <td><%=m.getString("Peso")%></td>
+                    <td><%=m.getString("Alto")%></td>
+                    <td><%=m.getString("Ancho")%></td>
+                    <td><%=m.getString("Largo")%></td>
+                    <td><%=m.getString("Valor_compra")%></td>
+                    <td><%=m.getString("Fecha_compra")%></td>
+                    <td><%=m.getString("Fecha_baja")%></td>
+                    <td><%=m.getString("Estado_actual")%></td>
+                    <td><%=m.getString("Color")%></td>                
+                </tr> 
+                <%
                     }
                 %>
-            </tr>           
-        </tbody>
-    </table>
-        
-        <script>
-          $(document).ready(function() {
-            $('#example').DataTable();
-          } );              
-        </script>
+            </tbody>
+        </table>
+
+
     </body>
 </html>

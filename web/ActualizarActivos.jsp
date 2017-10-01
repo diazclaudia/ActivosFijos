@@ -4,106 +4,130 @@
     Author     : Lenovo
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Consultas.ActivosFijos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-         <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-          <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-           <script type="text/javascript" src="js/underscore.js"></script>
-            <script type="text/javascript" src="js/underscore.js"></script>
-             <script type="text/javascript" src="js/underscore.js"></script>
-              <script type="text/javascript" src="js/underscore.js"></script>
-               <script type="text/javascript" src="js/underscore.js"></script>
-                <script type="text/javascript" src="js/underscore.js"></script>
-                 <script type="text/javascript" src="js/underscore.js"></script>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>DataTables example - Zero configuration</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"><link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+        <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <style type="text/css">
+            .bs-example{
+                margin: 20px;
+            }
+        </style>
+        <script>
+
+            $(document).ready(function () {
+                $.noConflict();
+                $('#example1').DataTable();
+            });
+        </script>
     </head>
     <body>
-       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
+        <br><br>
+        <table id="example1" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Serial</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>N. interno</th>
+                    <th>Peso</th>
+                    <th>Alto</th>
+                    <th>Ancho</th>
+                    <th>Largo</th>
+                    <th>Valor compra</th>
+                    <th>Fecha compra</th>
+                    <th>Fecha baja</th>
+                    <th>Estado actual</th>
+                    <th>Color</th>   
+                    <th>Editar</th>   
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Serial</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>N. interno</th>
+                    <th>Peso</th>
+                    <th>Alto</th>
+                    <th>Ancho</th>
+                    <th>Largo</th>
+                    <th>Valor compra</th>
+                    <th>Fecha compra</th>
+                    <th>Fecha baja</th>
+                    <th>Estado actual</th>
+                    <th>Color</th> 
+                    <th>Editar</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <%
+                    ActivosFijos af = new ActivosFijos();
+                    ResultSet m = af.BuscarActivos();
+                    while (m.next()) {
+                        String serial = m.getString("Serial");
+                %>
+                <tr>                 
+                    <td><%=m.getString("Serial")%></td>
+                    <td><%=m.getString("Nombre")%></td>
+                    <td><%=m.getString("Descripcion")%></td>
+                    <td><%=m.getString("Tipo")%></td>
+                    <td><%=m.getString("N_interno")%></td>
+                    <td><%=m.getString("Peso")%></td>
+                    <td><%=m.getString("Alto")%></td>
+                    <td><%=m.getString("Ancho")%></td>
+                    <td><%=m.getString("Largo")%></td>
+                    <td><%=m.getString("Valor_compra")%></td>
+                    <td><%=m.getString("Fecha_compra")%></td>
+                    <td><%=m.getString("Fecha_baja")%></td>
+                    <td><%=m.getString("Estado_actual")%></td>
+                    <td><%=m.getString("Color")%></td> 
+                    <td><a href="#myModal" class="btn btn-primary btn-details" data-toggle="modal">Editar</a></td>                     
+                </tr> 
+
+            <div class="bs-example">         
+
+                <!-- Modal HTML -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"><%=serial%></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you want to save changes you made to document before closing?</p>
+                                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+
+            <%
+                }
+            %>
+        </tbody>
     </table>
-        
-        <script>
-            var editor; // use a global for the submit and return data rendering in the examples
- 
-$(document).ready(function() {
-    editor = new $.fn.dataTable.Editor( {
-        ajax: "../php/staff.php",
-        table: "#example",
-        fields: [ {
-                label: "First name:",
-                name: "first_name"
-            }, {
-                label: "Last name:",
-                name: "last_name"
-            }, {
-                label: "Position:",
-                name: "position"
-            }, {
-                label: "Office:",
-                name: "office"
-            }, {
-                label: "Extension:",
-                name: "extn"
-            }, {
-                label: "Start date:",
-                name: "start_date",
-                type: 'datetime'
-            }, {
-                label: "Salary:",
-                name: "salary"
-            }
-        ]
-    } );
- 
-    var table = $('#example').DataTable( {
-        lengthChange: false,
-        ajax: "../php/staff.php",
-        columns: [
-            { data: null, render: function ( data, type, row ) {
-                // Combine the first and last names into a single table field
-                return data.first_name+' '+data.last_name;
-            } },
-            { data: "position" },
-            { data: "office" },
-            { data: "extn" },
-            { data: "start_date" },
-            { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
-        ],
-        select: true
-    } );
- 
-    // Display the buttons
-    new $.fn.dataTable.Buttons( table, [
-        { extend: "create", editor: editor },
-        { extend: "edit",   editor: editor },
-        { extend: "remove", editor: editor }
-    ] );
- 
-    table.buttons().container()
-        .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
-} );
-        </script>
-    </body>
+
+
+
+</body>
 </html>

@@ -32,38 +32,39 @@ and open the template in the editor.
                 (diferentes áreas se encuentran en diferentes ciudades).</p>
             <p> Diseñar una API REST que permite administrar los activos, esta debería permitir:</p><br>
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Buscar activos</a></li>                
-                <li><a data-toggle="tab" href="#menu2">Crear nuevos activos</a></li>
+                <li class="active"><a data-toggle="tab" href="#home">Crear nuevos activos </a></li>                
+                <li><a data-toggle="tab" href="#menu2">Buscar activos</a></li>
                 <li><a data-toggle="tab" href="#menu3">Actualizar activos</a></li>
                 <li><a data-toggle="tab" href="#menu4">Cambiar el serial interno y fecha de baja</a></li>
                 <li><a data-toggle="tab" href="#menu5">Listar las áreas o personas</a></li>
             </ul>
 
             <div class="tab-content">
-                <div id="home" class="tab-pane fade in active">
-                    <h3>Buscar por todos los activos</h3>
-                    <%String urlRedirect1 = "BuscarTodosActivos.jsp";%>
-                    <jsp:include page="<%=urlRedirect1%>"></jsp:include>
-                    </div>
+                
                     
-                    <div id="menu2" class="tab-pane fade">
+                    <div id="home" class="tab-pane fade in active">
                     <h3>Crear nuevos activos</h3>
                     <%String urlRedirect2 = "CrearActivos.jsp";%>
                     <jsp:include page="<%=urlRedirect2%>"></jsp:include>                
                     </div>
+                    <div id="menu2" class="tab-pane fade">
+                    <h3>Buscar cualquier variable</h3>
+                    <%String urlRedirect1 = "BuscarTodosActivos.jsp";%>
+                    <jsp:include page="<%=urlRedirect1%>"></jsp:include>
+                    </div>
                 <div id="menu3" class="tab-pane fade">
                     <h3>Actualizar activos</h3>
-                    <%String urlRedirect3 = "CrearActivos.jsp";%>
+                    <%String urlRedirect3 = "ActualizarActivos.jsp";%>
                     <jsp:include page="<%=urlRedirect3%>"></jsp:include>    
                 </div>
                 <div id="menu4" class="tab-pane fade">
                     <h3>Cambiar el serial interno y fecha de baja</h3>
-                    <%String urlRedirect4 = "CrearActivos.jsp";%>
+                    <%String urlRedirect4 = "CambiarSF.jsp";%>
                     <jsp:include page="<%=urlRedirect4%>"></jsp:include>    
                 </div>
                 <div id="menu5" class="tab-pane fade">
                     <h3>Listar las áreas o personas</h3>
-                    <%String urlRedirect5 = "CrearActivos.jsp";%>
+                    <%String urlRedirect5 = "ListarAreasPersonas.jsp";%>
                     <jsp:include page="<%=urlRedirect5%>"></jsp:include>    
                 </div>
             </div>
