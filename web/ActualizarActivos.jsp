@@ -19,7 +19,7 @@
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <style type="text/css">
-            .bs-example{
+            .bs-example1{
                 margin: 20px;
             }
         </style>

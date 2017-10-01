@@ -160,25 +160,24 @@ public class ActivosFijos {
         this.Estado_Actual = Estado_Actual;
         this.Color = Color;
     }
-    
+
     public ActivosFijos() {
-      
+
     }
-    
+
     public boolean crearActivo() {
         Conexion c = new Conexion();
-        String sentencia="insert into activosfijos (Nombre,Descripcion,Tipo,N_interno,Peso,Alto,Ancho,Largo,Valor_compra,Fecha_compra,"
+        String sentencia = "insert into activosfijos (Nombre,Descripcion,Tipo,N_interno,Peso,Alto,Ancho,Largo,Valor_compra,Fecha_compra,"
                 + "Fecha_baja,Estado_Actual,Color) "
-                + "Values('" + this.Nombre + "','" + this.Descripcion + "','" + this.Tipo +  "','" + this.N_interno + "','" 
-                + "" + this.Peso + "','" + this.Alto + "','"+ this.Ancho+ "','"+ this.Largo + "','"+ this.Valor_compra+"','"+ this.Fecha_compra+ "','"
-                + "" + this.Fecha_baja + "','" + this.Estado_Actual + "','"+ this.Color +  "' )";
+                + "Values('" + this.Nombre + "','" + this.Descripcion + "','" + this.Tipo + "','" + this.N_interno + "','"
+                + "" + this.Peso + "','" + this.Alto + "','" + this.Ancho + "','" + this.Largo + "','" + this.Valor_compra + "','" + this.Fecha_compra + "','"
+                + "" + this.Fecha_baja + "','" + this.Estado_Actual + "','" + this.Color + "' )";
         boolean exito = c.insertarBD(sentencia);
         c.cerrarConexion();
         return exito;
     }
 
-
-     public ResultSet BuscarActivos() throws SQLException {
+    public ResultSet BuscarActivos() throws SQLException {
 
         Conexion bd = new Conexion();
         String sentencia = "select * from activosfijos  ";
@@ -186,39 +185,17 @@ public class ActivosFijos {
         bd.cerrarConexion();
         return consultar;
     }
-     
-     public ActivosFijos BuscarActivosSerial(String Serial) {
+
+    public ResultSet BuscarActivosSerial(String Serial) throws SQLException {
 
         Conexion bd = new Conexion();
         String sentencia = "select * from activosfijos where Serial= '" + Serial + "'";
-        ResultSet rs = bd.consultarBD(sentencia);
-        try {
-
-            if (rs.next()) {
-                this.setNombre(rs.getString("Nombre"));                
-                this.setDescripcion(rs.getString("Descripcion"));
-                this.setTipo(rs.getString("Tipo"));
-                this.setN_interno(rs.getString("N_interno"));
-                this.setPeso(rs.getString("Peso"));
-                this.setAlto(rs.getString("Alto"));
-                this.setAncho(rs.getString("Ancho"));
-                this.setLargo(rs.getString("Largo"));
-                this.setValor_compra(rs.getString("Valor_compra"));
-                this.setFecha_compra(rs.getString("Fecha_compra"));
-                this.setFecha_baja(rs.getString("Fecha_baja"));
-                this.setEstado_Actual(rs.getString("Estado_Actual"));
-                this.setColor(rs.getString("Color"));
-                bd.cerrarConexion();
-                return this;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ActivosFijos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        ResultSet consultar = bd.consultarBD(sentencia);
         bd.cerrarConexion();
-        return null;
+        return consultar;
     }
-     
-       public boolean EditarActivo() throws SQLException {
+
+    public boolean EditarActivo() throws SQLException {
         Conexion bd = new Conexion();
         String sentencia = "Update activosfijos set  "
                 + " Nombre='" + this.Nombre + "',"
@@ -233,7 +210,7 @@ public class ActivosFijos {
                 + " Fecha_compra='" + this.Fecha_compra + "',"
                 + " Fecha_baja='" + this.Fecha_baja + "',"
                 + " Estado_Actual='" + this.Estado_Actual + "',"
-                + " Color='" + this.Color + "' "               
+                + " Color='" + this.Color + "' "
                 + " where Serial='" + this.Serial + "'";
 
         if (bd.actualizarBD(sentencia)) {
@@ -245,12 +222,12 @@ public class ActivosFijos {
         }
 
     }
-       
-       public boolean EditarSerialFecha() throws SQLException {
+
+    public boolean EditarSerialFecha() throws SQLException {
         Conexion bd = new Conexion();
-        String sentencia = "Update activosfijos set  "               
-                + " N_interno='" + this.N_interno + "',"                
-                + " Fecha_baja='" + this.Fecha_baja + "' "                            
+        String sentencia = "Update activosfijos set  "
+                + " N_interno='" + this.N_interno + "',"
+                + " Fecha_baja='" + this.Fecha_baja + "' "
                 + " where Serial='" + this.Serial + "'";
 
         if (bd.actualizarBD(sentencia)) {
@@ -261,6 +238,24 @@ public class ActivosFijos {
             return false;
         }
 
+    }
+
+    public ResultSet AsignadoArea(String serial) throws SQLException {
+
+        Conexion bd = new Conexion();
+        String sentencia = "select * from areas where Serial= '" + serial + "'";
+        ResultSet consultar = bd.consultarBD(sentencia);
+        bd.cerrarConexion();
+        return consultar;
+    }
+
+    public ResultSet AsignadoPersona(String serial) throws SQLException {
+
+        Conexion bd = new Conexion();
+        String sentencia = "select * from personas where Serial= '" + serial + "'";
+        ResultSet consultar = bd.consultarBD(sentencia);
+        bd.cerrarConexion();
+        return consultar;
     }
 
 }

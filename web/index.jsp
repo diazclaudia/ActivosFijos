@@ -16,6 +16,8 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
+        
+        
     </head>
     <body>
 
@@ -35,7 +37,8 @@ and open the template in the editor.
                 <li><a data-toggle="tab" href="#menu2">Buscar activos</a></li>
                 <li><a data-toggle="tab" href="#menu3">Actualizar activos</a></li>
                 <li><a data-toggle="tab" href="#menu4">Cambiar el serial interno y fecha de baja</a></li>
-                <li><a data-toggle="tab" href="#menu5">Listar las áreas o personas</a></li>
+                <li><a data-toggle="tab" href="#menu5">Listar las áreas</a></li>
+                <li><a data-toggle="tab" href="#menu6">Listar las personas</a></li>
             </ul>
 
             <div class="tab-content">
@@ -62,9 +65,14 @@ and open the template in the editor.
                     <jsp:include page="<%=urlRedirect4%>"></jsp:include>    
                 </div>
                 <div id="menu5" class="tab-pane fade">
-                    <h3>Listar las áreas o personas</h3>
-                    <%String urlRedirect5 = "ListarAreasPersonas.jsp";%>
+                    <h3>Listar las áreas</h3>
+                    <%String urlRedirect5 = "ListarAreas.jsp";%>
                     <jsp:include page="<%=urlRedirect5%>"></jsp:include>    
+                </div>
+                <div id="menu6" class="tab-pane fade">
+                    <h3>Listar las personas</h3>
+                    <%String urlRedirect6 = "ListarPersonas.jsp";%>
+                    <jsp:include page="<%=urlRedirect6%>"></jsp:include>    
                 </div>
             </div>
         </div>
