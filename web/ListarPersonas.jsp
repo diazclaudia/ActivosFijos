@@ -23,13 +23,13 @@
             
             $(document).ready(function () {
                 $.noConflict();
-                $('#example4').DataTable();
+                $('#example5').DataTable();               
             });
         </script>
     </head>
     <body>
         <br><br>
-        <table id="example4" class="display" cellspacing="0" width="100%">
+        <table id="example5" class="display" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Id persona</th>

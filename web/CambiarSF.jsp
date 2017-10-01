@@ -24,13 +24,7 @@
                 margin: 20px;
             }
         </style>
-        <script>
-
-            $(document).ready(function () {
-            $.noConflict();
-            $('#example2').DataTable();
-            });
-        </script>
+       
     </head>
     <body>
         <br><br>

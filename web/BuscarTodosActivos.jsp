@@ -18,18 +18,12 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
-      
-        <script>
-
-            $(document).ready(function () {
-            $.noConflict();
-            $('#example2').DataTable();
-            });
-        </script>
+       
+       
     </head>
     <body>
         <br><br>
-        <table id="example2" class="display" cellspacing="0" width="100%">
+        <table id="example" class="display" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Serial</th>

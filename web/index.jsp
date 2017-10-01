@@ -15,9 +15,18 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-        
-        
+
+        <script>
+
+            $(document).ready(function () {
+                $.noConflict();
+                $('#example').DataTable();
+                $('#example1').DataTable();
+                $('#example2').DataTable();
+                $('#example3').DataTable();
+            });
+        </script>
+
     </head>
     <body>
 
@@ -42,35 +51,35 @@ and open the template in the editor.
             </ul>
 
             <div class="tab-content">
-                
-                    
-                    <div id="home" class="tab-pane fade in active">
+
+
+                <div id="home" class="tab-pane fade in active">
                     <h3>Crear nuevos activos</h3>
                     <%String urlRedirect2 = "CrearActivos.jsp";%>
                     <jsp:include page="<%=urlRedirect2%>"></jsp:include>                
                     </div>
                     <div id="menu2" class="tab-pane fade">
-                    <h3>Buscar cualquier variable</h3>
+                        <h3>Buscar cualquier variable</h3>
                     <%String urlRedirect1 = "BuscarTodosActivos.jsp";%>
                     <jsp:include page="<%=urlRedirect1%>"></jsp:include>
                     </div>
-                <div id="menu3" class="tab-pane fade">
-                    <h3>Actualizar activos</h3>
+                    <div id="menu3" class="tab-pane fade">
+                        <h3>Actualizar activos</h3>
                     <%String urlRedirect3 = "ActualizarActivos.jsp";%>
                     <jsp:include page="<%=urlRedirect3%>"></jsp:include>    
-                </div>
-                <div id="menu4" class="tab-pane fade">
-                    <h3>Cambiar el serial interno y fecha de baja</h3>
+                    </div>
+                    <div id="menu4" class="tab-pane fade">
+                        <h3>Cambiar el serial interno y fecha de baja</h3>
                     <%String urlRedirect4 = "CambiarSF.jsp";%>
                     <jsp:include page="<%=urlRedirect4%>"></jsp:include>    
-                </div>
-                <div id="menu5" class="tab-pane fade">
-                    <h3>Listar las áreas</h3>
+                    </div>
+                    <div id="menu5" class="tab-pane fade">
+                        <h3>Listar las áreas</h3>
                     <%String urlRedirect5 = "ListarAreas.jsp";%>
                     <jsp:include page="<%=urlRedirect5%>"></jsp:include>    
-                </div>
-                <div id="menu6" class="tab-pane fade">
-                    <h3>Listar las personas</h3>
+                    </div>
+                    <div id="menu6" class="tab-pane fade">
+                        <h3>Listar las personas</h3>
                     <%String urlRedirect6 = "ListarPersonas.jsp";%>
                     <jsp:include page="<%=urlRedirect6%>"></jsp:include>    
                 </div>

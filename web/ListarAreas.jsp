@@ -21,7 +21,8 @@
  
         <script>
             
-            $(document).ready(function () {             
+            $(document).ready(function () { 
+                $.noConflict();
                 $('#example3').DataTable();
             });
         </script>
