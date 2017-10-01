@@ -265,50 +265,50 @@
         validarCampos<%=serial%>: function () {
         var n_interno<%=serial%> = $('#n_interno<%=serial%>').val();
         if (n_interno<%=serial%> < 1) {
-        alert("El número interno interno debe ser un número positivo mayor que cero");
+        alert("400. El número interno interno debe ser un número positivo mayor que cero");
         return false;
         }
 
         var peso<%=serial%> = $('#peso<%=serial%>').val();
         if (peso<%=serial%> < 1) {
-        alert("El peso debe ser un número positivo mayor que cero");
+        alert("400. El peso debe ser un número positivo mayor que cero");
         return false;
         }
         var alto<%=serial%> = $('#alto<%=serial%>').val();
         if (alto<%=serial%> < 1) {
-        alert("El alto debe ser un número positivo mayor que cero");
+        alert("400. El alto debe ser un número positivo mayor que cero");
         return false;
         }
         var ancho<%=serial%> = $('#ancho<%=serial%>').val();
         if (ancho<%=serial%> < 1) {
-        alert("El ancho debe ser un número positivo mayor que cero");
+        alert("400. El ancho debe ser un número positivo mayor que cero");
         return false;
         }
         var largo<%=serial%> = $('#largo<%=serial%>').val();
         if (largo<%=serial%> < 1) {
-        alert("El largo debe ser un número positivo mayor que cero");
+        alert("400. El largo debe ser un número positivo mayor que cero");
         return false;
         }
         var valor_compra<%=serial%> = $('#valor_compra<%=serial%>').val();
         if (valor_compra<%=serial%> < 1) {
-        alert("El valor de la compra debe ser un número positivo mayor que cero");
+        alert("400.El valor de la compra debe ser un número positivo mayor que cero");
         return false;
         }
 
         var fecha_baja<%=serial%> = $('#fecha_baja<%=serial%>').val();
         var fecha_compra<%=serial%> = $('#fecha_compra<%=serial%>').val();
         if (fecha_compra<%=serial%> === "") {
-        alert("La fecha de compra debe tener un valor");
+        alert("400. La fecha de compra debe tener un valor");
         return false;
         }
 
         if (fecha_baja<%=serial%> === "") {
-        alert("La fecha de baja debe tener un valor");
+        alert("400. La fecha de baja debe tener un valor");
         return false;
         }
 
         if (fecha_baja<%=serial%> < fecha_compra<%=serial%>) {
-        alert("La fecha de baja no puede ser mayor que la de compra");
+        alert("400. La fecha de baja no puede ser mayor que la de compra");
         return false;
         }
         
@@ -367,13 +367,13 @@
                         success: function (data) {
                         if (data.ok === true) {
                         if (data.EditarActivo === true) {
-                        alert("El activo se ha modificado");
+                        alert("200. El activo se ha modificado");
                         self.location.reload();
                         } else {
-                        alert("El activo no se ha modificado");
+                        alert("Error 500. El activo no se ha modificado");
                         }
                         } else {
-                        alert("Error");
+                        alert("Error 500");
                         }
                         }
                 });

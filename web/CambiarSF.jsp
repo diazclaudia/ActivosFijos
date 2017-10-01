@@ -267,7 +267,7 @@
         
         var n_interno_<%=serials%> = $('#n_interno_<%=serials%>').val();
         if (n_interno_<%=serials%> < 1) {
-        alert("El número interno interno debe ser un número positivo mayor que cero");
+        alert("400. El número interno interno debe ser un número positivo mayor que cero");
         return false;
         }
 
@@ -275,17 +275,17 @@
         var fecha_baja_<%=serials%> = $('#fecha_baja_<%=serials%>').val();
         var fecha_compra_<%=serials%> = $('#fecha_compra_<%=serials%>').val();
         if (fecha_compra_<%=serials%> === "") {
-        alert("La fecha de compra debe tener un valor");
+        alert("400. La fecha de compra debe tener un valor");
         return false;
         }
 
         if (fecha_baja_<%=serials%> === "") {
-        alert("La fecha de baja debe tener un valor");
+        alert("400. La fecha de baja debe tener un valor");
         return false;
         }
 
         if (fecha_baja_<%=serials%> < fecha_compra_<%=serials%>) {
-        alert("La fecha de baja no puede ser mayor que la de compra");
+        alert("400. La fecha de baja no puede ser mayor que la de compra");
         return false;
         }
         
@@ -324,13 +324,13 @@
                         success: function (data) {
                         if (data.ok === true) {
                         if (data.EditarSerialFecha === true) {
-                        alert("El activo se ha modificado");
+                        alert("200. El activo se ha modificado");
                         self.location.reload();
                         } else {
-                        alert("El activo no se ha modificado");
+                        alert("500. El activo no se ha modificado");
                         }
                         } else {
-                        alert("Error");
+                        alert("500. Error");
                         }
                         }
                 });
