@@ -15,14 +15,16 @@
     //Lista de procesos o tareas a realizar 
     List<String> tareas = Arrays.asList(new String[]{
         "BuscarTodosActivos",
-        "CrearActivos"
+        "CrearActivos",
+        "EditarActivos"
     });
 
     String proceso = "" + request.getParameter("proceso");
     // Validación de parámetros utilizados en todos los procesos.
     if (tareas.contains(proceso)) {
         respuesta += "\"ok\": true";
-
+        
+        String Serial = "" + request.getParameter("Serial");
         String Nombre = "" + request.getParameter("Nombre");
         String Descripcion = "" + request.getParameter("Descripcion");
         String Tipo = "" + request.getParameter("Tipo");
@@ -61,17 +63,37 @@
 
             // Adjuntar respuesta.
             if (af.crearActivo()) {
-                respuesta += ",\"CrearActivos\":true"; 
+                respuesta += ",\"CrearActivos\":true";
             } else {
                 respuesta += ",\"CrearActivos\":false";
             }
 
             // --------------------------------Proceso 2---------------------------------- //
-        }
-        /*else if () {
-               
+        } else if (proceso.equals("EditarActivos")) {
+            // Procesos para determinar respuestas...
+            af.setSerial(Serial);
+            af.setNombre(Nombre);
+            af.setDescripcion(Descripcion);
+            af.setTipo(Tipo);
+            af.setN_interno(N_interno);
+            af.setPeso(Peso);
+            af.setAlto(Alto);
+            af.setAncho(Ancho);
+            af.setLargo(Largo);
+            af.setValor_compra(Valor_compra);
+            af.setFecha_compra(Fecha_compra);
+            af.setFecha_baja(Fecha_baja);
+            af.setEstado_Actual(Estado);
+            af.setColor(Color);
 
-            }*/
+            // Adjuntar respuesta.
+            if (af.EditarActivo()) {
+                respuesta += ",\"EditarActivo\":true";
+            } else {
+                respuesta += ",\"EditarActivo\":false";
+            }
+
+        }
 
         // ------------------------------------------------------------------------------------- //
         // -----------------------------------FIN PROCESOS-------------------------------------- //

@@ -217,5 +217,33 @@ public class ActivosFijos {
         bd.cerrarConexion();
         return null;
     }
+     
+       public boolean EditarActivo() throws SQLException {
+        Conexion bd = new Conexion();
+        String sentencia = "Update activosfijos set  "
+                + " Nombre='" + this.Nombre + "',"
+                + " Descripcion='" + this.Descripcion + "',"
+                + " Tipo='" + this.Tipo + "',"
+                + " N_interno='" + this.N_interno + "',"
+                + " Peso='" + this.Peso + "',"
+                + " Alto='" + this.Alto + "',"
+                + " Ancho='" + this.Ancho + "',"
+                + " Largo='" + this.Largo + "',"
+                + " Valor_compra='" + this.Valor_compra + "',"
+                + " Fecha_compra='" + this.Fecha_compra + "',"
+                + " Fecha_baja='" + this.Fecha_baja + "',"
+                + " Estado_Actual='" + this.Estado_Actual + "',"
+                + " Color='" + this.Color + "' "               
+                + " where Serial='" + this.Serial + "'";
+
+        if (bd.actualizarBD(sentencia)) {
+            bd.cerrarConexion();
+            return true;
+        } else {
+            bd.cerrarConexion();
+            return false;
+        }
+
+    }
 
 }
